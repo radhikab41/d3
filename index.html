@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <title>d3</title>
+    </head>
+    <body>
+        <h1>hii</h1>
+        <h1 class="hello">hello world</h1>
+        <h1 id ="ided">hi</h1>
+        <svg width="800" height="500">
+            <rect x=30 y=30  width="600px " height="300px" fill="#ff6666"></rect></svg>
+            <svg width="800" height="500">
+            <line x1="100" y1="100" x2="200" y2="200" style="stroke:rgb(255,0,0); stroke-width:2"></line>
+        </svg>
+        <ul id="list">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+       <button onclick="javascript:remove()">remove</button>
+        <script>
+        // d3.select(".hello").html("hi world");
+         var span = d3.select(".hello").append("span").text("helloo");
+         span.text("coming from span").style("color"," red");
+
+         d3.select(".hello").classed(".new",true);
+         d3.select(".new").style("background-color","blue");
+
+
+         d3.select("#list").selectAll("li").data([1,2,3,4,5]).text(function(d){return "static : "+d;})
+         .enter().append("li").text(function(d,i){
+             console.log(d);
+             console.log(i);
+             console.log(this);
+             return "dynamic : "+d;});
+
+         
+        </script>
+        <hr/>
+        <p></p>
+        <div class="datum"></div>
+        <script>
+        d3.select("p").datum(100).text(function(d){
+            return "assigning" + d + "as data";
+        });
+
+        d3.select(".datum").datum(500).text(function(d){
+            return "added data to div : "+d;
+        });
+        </script>
+        <script>
+        function remove(){
+            console.log("inside");
+            d3.select("#list").selectAll("li").data([1,2,3,4,5]).exit().remove();
+        }
+        </script>
+    </body>
+</html>

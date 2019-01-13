@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <title>SVG</title>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src = "d3-transform.js"></script>
+    </head>
+    <body>
+        <div class="svgContainer"></div>
+        <script>
+            // ------------- adding a line ------------------
+        d3.select(".svgContainer").append("svg");
+         d3.select(".svgContainer").select("svg").append("line")
+        .classed("line",true)
+        .attr("x1",100)
+        .attr("y1",100)
+        .attr("x2",200)
+        .attr("y2",200)
+        .style("stroke","rgb(255,0,0)")
+        .style("stroke-width",2);
+
+            // ---------------- adding a rectangle --------------
+        d3.select(".svgContainer").append("svg")
+        .attr("width",500)
+        .attr("height",500)
+        .classed("rectangle",true)
+        .append("rect")
+        .attr("width",300)
+        .attr("height",400)
+        .attr("fill","yellow");
+        
+
+        // -------------- adding a circle -----------------
+        var svgHeight = 300;
+        var svgWidth = 300;
+        d3.select(".svgContainer").append("svg")
+        .attr("width", svgWidth)
+        .attr("height",svgHeight)
+        .classed("circle",true)
+        .append("circle")
+        .attr("cx" ,"150")
+        .attr("cy","150")
+        .attr("r","30")
+        .attr("fill", "pink");
+
+        
+
+       
+        </script>
+
+        <div class="group"></div>
+        <script>
+            var w = 500;
+            var h= 500;
+            d3.select(".group").append("svg")            
+            .attr("width",w)
+            .attr("height",h);
+
+            var group = d3.select(".group").select("svg").append("g").attr("transform","translate(60,60) rotate(0)");
+
+            var rect = group.append("rect")
+            .attr("width", 80)
+            .attr("height",80)
+            .attr("fill","green");
+
+            var circle = group.append("circle")
+            .attr("cx",50)
+            .attr("cy",50)
+            .attr("r",20)
+            .attr("fill","#ff6666");
+        </script>
+    </body>
+</html>
